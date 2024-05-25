@@ -9,9 +9,9 @@ int main(int argc, char* argv[]){
         return 1;
     }
     constexpr size_t page_size = 4 * (1 << 10);
-    constexpr size_t arr_size = 20UL * (1 << 30);
+    constexpr size_t arr_size = 16UL * (1 << 30);
     char* arr = new char[arr_size];
-    int delay_ms = 10;
+    int delay_ms = 5;
 
     size_t i = 0;
     while(i < arr_size){
@@ -30,3 +30,9 @@ int main(int argc, char* argv[]){
     delete[] arr;
     return 0;
 }
+
+/*
+Результаты:
+В режиме чтения память не изменяется. (ОС - Linux)
+В режиме записи скорость потребления памяти примерно 1 ГБ/сек и ОС "становится тыквой" за 10-12 секунд. 
+*/
